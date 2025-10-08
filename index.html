@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcademicShelf - Your Academic Resource Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .cart-item {
+            transition: all 0.3s ease;
+        }
+
+        .cart-item:hover {
+            background-color: #f9fafb;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white shadow-lg animate__animated animate__fadeInDown"
+        style="animation-duration:1.2s;">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-book-open text-2xl"></i>
+                    <a href="#" class="text-2xl font-bold">AcademicShelf</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#products" class="hover:text-gray-200 transition">Products</a>
+                    <a href="#about" class="hover:text-gray-200 transition">About</a>
+                    <a href="#contact" class="hover:text-gray-200 transition">Contact</a>
+                    <button id="login-btn" class="hover:text-gray-200 transition">Login</button>
+                    <button id="cart-btn" class="relative">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span id="cart-count"
+                            class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    </button>
+                </div>
+                <button class="md:hidden text-xl" id="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden gradient-bg text-white px-4 py-2">
+        <div class="flex flex-col space-y-3">
+            <a href="#products" class="py-2 border-b border-gray-300">Products</a>
+            <a href="#about" class="py-2 border-b border-gray-300">About</a>
+            <a href="#contact" class="py-2 border-b border-gray-300">Contact</a>
+            <a href="#" id="mobile-login-btn" class="py-2 border-b border-gray-300">Login</a>
+            <div class="flex items-center py-2">
+                <i class="fas fa-shopping-cart mr-2"></i>
+                <span>Cart (<span id="mobile-cart-count">0</span>)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Your Academic Resources, Simplified</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">High-quality lab records and booklets for students and
+                educators at affordable prices.</p>
+            <a href="#products"
+                class="bg-white text-indigo-600 font-bold px-8 py-3 rounded-full hover:bg-gray-100 transition duration-300 inline-block">Browse
+                Products</a>
+        </div>
+    </section>
+    <!-- Products Section -->
+    <section id="products" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Our Products</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Product 1 -->
+                <div
+                    class="product-card bg-white rounded-lg overflow-hidden shadow-md border border-gray-100 transition duration-300">
+                    <div class="h-48 bg-indigo-50 flex items-center justify-center">
+                        <i class="fas fa-flask text-6xl text-indigo-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Lab Records</h3>
+                        <p class="text-gray-600 mb-4">Comprehensive lab record notebooks with pre-formatted tables and
+                            sections for all your experimental needs.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-indigo-600">₹120</span>
+                            <button
+                                class="add-to-cart bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition"
+                                data-id="1" data-name="Lab Records" data-price="120">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div
+                    class="product-card bg-white rounded-lg overflow-hidden shadow-md border border-gray-100 transition duration-300">
+                    <div class="h-48 bg-purple-50 flex items-center justify-center">
+                        <i class="fas fa-book text-6xl text-purple-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Booklets</h3>
+                        <p class="text-gray-600 mb-4">Compact and informative booklets covering various academic topics,
+                            perfect for quick reference and study.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-purple-600">₹30</span>
+                            <button
+                                class="add-to-cart bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition"
+                                data-id="2" data-name="Booklets" data-price="30">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">About AcademicShelf</h2>
+                <div class="bg-white rounded-lg shadow-md p-8">
+                    <p class="text-gray-700 mb-6">
+                        AcademicShelf was founded with the mission to provide high-quality, affordable academic
+                        resources to students and educators alike. We understand the challenges of organizing academic
+                        work and aim to simplify the process with our carefully designed products.
+                    </p>
+                    <p class="text-gray-700">
+                        Our lab records and booklets are created by educators with years of classroom experience,
+                        ensuring they meet the practical needs of modern students. We're committed to continuous
+                        improvement and welcome feedback from our customers.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Contact Us</h2>
+            <div class="max-w-2xl mx-auto bg-gray-50 rounded-lg shadow-md p-8">
+                <form>
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-700 mb-2">Name</label>
+                        <input type="text" id="name"
+                            class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700 mb-2">Email</label>
+                        <input type="email" id="email"
+                            class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    </div>
+                    <div class="mb-4">
+                        <label for="message" class="block text-gray-700 mb-2">Message</label>
+                        <textarea id="message" rows="4"
+                            class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                    </div>
+                    <button type="submit"
+                        class="bg-indigo-600 text-white px-6 py-2 rounded hover:bg-indigo-700 transition">Send
+                        Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar"
+        class="fixed top-0 right-0 h-full w-full md:w-96 bg-white shadow-lg transform translate-x-full transition duration-300 z-50 overflow-y-auto">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-gray-800">Your Cart</h3>
+                <button id="close-cart" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <div id="cart-items" class="mb-6">
+                <!-- Cart items will be added here dynamically -->
+                <p id="empty-cart-message" class="text-gray-500 text-center py-8">Your cart is empty</p>
+            </div>
+
+            <div class="border-t border-gray-200 pt-4">
+                <div class="flex justify-between mb-2">
+                    <span class="font-medium">Subtotal:</span>
+                    <span id="cart-subtotal">₹0.00</span>
+                </div>
+                <div class="flex justify-between mb-4">
+                    <span class="font-medium">Shipping:</span>
+                    <span>₹0.00</span>
+                </div>
+                <div class="flex justify-between text-lg font-bold">
+                    <span>Total:</span>
+                    <span id="cart-total">₹0.00</span>
+                </div>
+
+                <button id="checkout-btn"
+                    class="w-full gradient-bg text-white py-3 rounded-lg font-bold mt-6 hover:opacity-90 transition">
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md mx-4">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-bold text-gray-800">Complete Your Purchase</h3>
+                    <button id="close-checkout" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+
+                <div class="flex mb-4 border-b border-gray-200">
+                    <button id="card-tab"
+                        class="px-4 py-2 font-medium border-b-2 border-indigo-600 text-indigo-600">Card</button>
+                    <button id="upi-tab" class="px-4 py-2 font-medium text-gray-500">UPI</button>
+                </div>
+
+                <div id="card-payment">
+                    <form id="payment-form">
+                        <div class="mb-4">
+                            <label for="card-name" class="block text-gray-700 mb-2">Name on Card</label>
+                            <input type="text" id="card-name"
+                                class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="card-number" class="block text-gray-700 mb-2">Card Number</label>
+                            <input type="text" id="card-number"
+                                class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                placeholder="4242 4242 4242 4242" required>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div>
+                                <label for="card-expiry" class="block text-gray-700 mb-2">Expiry Date</label>
+                                <input type="text" id="card-expiry"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                    placeholder="MM/YY" required>
+                            </div>
+                            <div>
+                                <label for="card-cvc" class="block text-gray-700 mb-2">CVC</label>
+                                <input type="text" id="card-cvc"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                    placeholder="123" required>
+                            </div>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full gradient-bg text-white py-3 rounded-lg font-bold hover:opacity-90 transition">
+                            Pay ₹<span id="payment-total">0.00</span>
+                        </button>
+                    </form>
+                </div>
+
+                <div id="upi-payment" class="hidden">
+                    <div class="text-center mb-4">
+                        <p class="text-gray-700 mb-2">Scan this QR code to pay via UPI</p>
+                        <div id="upi-qr-code"
+                            class="w-48 h-48 mx-auto bg-gray-100 flex items-center justify-center mb-4">
+                            <p class="text-gray-500">QR Code will appear here</p>
+                        </div>
+                        <p class="text-gray-700 font-medium">UPI ID: academicshelf@upi</p>
+                        <p class="text-gray-700 mb-4">Amount: ₹<span id="upi-amount">0</span></p>
+                        <button id="upi-pay-button"
+                            class="w-full gradient-bg text-white py-3 rounded-lg font-bold hover:opacity-90 transition">
+                            I've made the payment
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div id="confirmation-modal"
+        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md mx-4">
+            <div class="p-6 text-center">
+                <div class="text-green-500 text-6xl mb-4">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Order Confirmed!</h3>
+                <p class="text-gray-600 mb-2">Thank you for your purchase. Your order has been placed successfully.</p>
+                <p class="text-gray-800 font-bold mb-4">Booking ID: <span id="booking-id">AC-XXXXXX</span></p>
+                <p class="text-gray-600 mb-6">A confirmation email has been sent to your registered email address.</p>
+                <button id="close-confirmation"
+                    class="gradient-bg text-white px-6 py-2 rounded-lg font-bold hover:opacity-90 transition">
+                    Continue Shopping
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md mx-4">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-bold text-gray-800" id="auth-modal-title">Login</h3>
+                    <button id="close-auth" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+
+                <div class="flex mb-4 border-b border-gray-200">
+                    <button id="login-tab"
+                        class="px-4 py-2 font-medium border-b-2 border-indigo-600 text-indigo-600">Login</button>
+                    <button id="signup-tab" class="px-4 py-2 font-medium text-gray-500">Sign Up</button>
+                </div>
+
+                <form id="login-form" class="mb-0">
+                    <div class="mb-4">
+                        <label for="login-email" class="block text-gray-700 mb-2">Email</label>
+                        <input type="email" id="login-email"
+                            class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="login-password" class="block text-gray-700 mb-2">Password</label>
+                        <input type="password" id="login-password"
+                            class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            required>
+                    </div>
+                    <button type="submit"
+                        class="w-full gradient-bg text-white py-3 rounded-lg font-bold hover:opacity-90 transition">
+                        Login
+                    </button>
+                </form>
+
+                <form id="signup-form" class="hidden">
+                    <div class="mb-4">
+                        <label for="signup-name" class="block text-gray-700 mb-2">Full Name</label>
+                        <input type="text" id="signup-name"
+                            class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="signup-email" class="block text-gray-700 mb-2">Email</label>
+                        <input type="email" id="signup-email"
+                            class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="signup-rollno" class="block text-gray-700 mb-2">Roll Number</label>
+                        <input type="text" id="signup-rollno"
+                            class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="signup-password" class="block text-gray-700 mb-2">Password</label>
+                        <input type="password" id="signup-password"
+                            class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            required>
+                    </div>
+                    <button type="submit"
+                        class="w-full gradient-bg text-white py-3 rounded-lg font-bold hover:opacity-90 transition">
+                        Sign Up
+                    </button>
+                </form>
+
+                <div id="user-profile" class="hidden text-center">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-indigo-100 flex items-center justify-center mb-4">
+                        <i class="fas fa-user text-3xl text-indigo-600"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2" id="user-name">John Doe</h4>
+                    <p class="text-gray-600 mb-1" id="user-email">john@example.com</p>
+                    <p class="text-gray-600 mb-4" id="user-rollno">Roll No: 2023001</p>
+                    <button id="logout-btn" class="text-red-500 hover:text-red-700 font-medium">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-book-open text-2xl"></i>
+                        <span class="text-xl font-bold">AcademicShelf</span>
+                    </div>
+                    <p class="mt-2 text-sm">Quality academic resources for students</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-gray-200 transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-gray-200 transition"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-gray-200 transition"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="border-t border-gray-400 mt-6 pt-6 text-sm text-center">
+                <p>&copy; 2023 AcademicShelf. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
